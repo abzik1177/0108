@@ -56,3 +56,35 @@ switch (num) {
         console.log('Yoq bu safar emas');
         break;
 }
+
+// let num = 50;
+
+// while (num <= 55) {
+//     console.log(num);
+//     num++;
+// };
+
+// do {
+//     console.log(num);
+//     num++;
+// }
+// while (num < 55);
+
+// for (let i = 1; i < 8; i++){
+//     console.log(num);
+//     num++;
+// };
+
+let yoshi = 40;
+
+for (let i = 1; i < 60; i++) {
+    console.log(yoshi);
+    yoshi=yoshi +2;
+    if (yoshi === 50){
+        console.log('yubiley bilan')
+    continue;
+    };
+    if (yoshi === 60 ) {
+        break;
+    };
+};
