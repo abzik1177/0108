@@ -81,10 +81,10 @@ for (let i = 1; i < 60; i++) {
     console.log(yoshi);
     yoshi=yoshi +2;
     if (yoshi === 50){
-        console.log('yubiley bilan')
+        console.log('yubiley bilan');
     continue;
-    };
+    }
     if (yoshi === 60 ) {
         break;
-    };
-};
+    }
+}

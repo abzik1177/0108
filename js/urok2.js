@@ -1,37 +1,72 @@
-"use strict"
+"use strict";
+let numberOfFilms;
 
-const numberOfFilms = +prompt('Skolko filmov vi stomreli', ''); 
+function start() {
+    numberOfFilms = +prompt('Skolko filmov vi stomreli', '');
+
+    while (numberOfFilms == '' || numberOfFilms == null || 
+    isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('Skolko filmov vi stomreli', '');
+    }
+}
+
+start();
 
 const personalMovieDB = {
         count: numberOfFilms,
-        movies: [],
+        movies: {},
         actors: {},
         gender:[],
-        privat: false
+        privat: false,
 };
 
-for (let i = 0; i < 2; i++) {
-    const a = prompt('Odin iz poslednix prosmotrennix filmov?', ''),
-          b = prompt('Na skolko otsenite ego?', '');
 
-         if ( a != null && b != null  && a!='' && b !='' && a.length < 50) {
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt('Odin iz poslednix prosmotrennix filmov?', ''),
+            b = prompt('Na skolko otsenite ego?', '');
+
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
             personalMovieDB.movies[a] = b;
-            console.log("1 javoblar toliq kiritildi")
-         } else{
-             console.log("javoblar toliq emas");
-             i--;
-         }
-};
+            console.log('done');
+        } else {
+            console.log('error');
+            i--;
+        }
+    }
+}
 
-console.log(personalMovieDB);
+rememberMyFilms();
 
-if (numberOfFilms < 10){
-    console.log('Malo');
-} else if (numberOfFilms > 10 && numberOfFilms < 30){
-    console.log("juda yaxshi tomoshabin ekansiz");
-} else if (numberOfFilms > 30){
-    console.log("Siz kinomansiz");
-}else{
-      console.log("Error");
-};
+function detectPersonalLevel() {
+    if (numberOfFilms < 10){
+        console.log('Malo');
+    } else if (numberOfFilms > 10 && numberOfFilms < 30){
+        console.log("juda yaxshi tomoshabin ekansiz"); 
+    } else if (numberOfFilms >= 30){
+        console.log("Siz kinomansiz");
+    }else{
+          console.log("Error");
+    }    
+}
 
+detectPersonalLevel();
+
+function showMyDB(hidden){
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
+
+showMyDB(personalMovieDB.privat);
+
+
+
+function writeYourGender() {
+    for (let i=1; i <= 3; i++) {
+        const genre = prompt(`Vashe lyubimiy janr? ${i}`);
+        personalMovieDB.gender[i - 1] = genre;
+    }
+}
+
+writeYourGender(); 
